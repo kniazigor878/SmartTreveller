@@ -1,0 +1,97 @@
+﻿INSERT INTO currencies (currencies_name) VALUES ('BYR');
+INSERT INTO currencies (currencies_name) VALUES ('RUB');
+INSERT INTO currencies (currencies_name) VALUES ('USD');
+INSERT INTO currencies (currencies_name) VALUES ('EUR');
+
+INSERT INTO rates (currencies_id_from,currencies_id_to,rates_coef) VALUES (2,1,210);
+INSERT INTO rates (currencies_id_from,currencies_id_to,rates_coef) VALUES (3,1,12800);
+INSERT INTO rates (currencies_id_from,currencies_id_to,rates_coef) VALUES (4,1,14700);
+
+INSERT INTO vehicle_types (vehicle_types_name) VALUES ('train');
+INSERT INTO vehicle_types (vehicle_types_name) VALUES ('bus');
+
+INSERT INTO seats (vehicle_types_id,seats_name) VALUES (1,'общий');
+INSERT INTO seats (vehicle_types_id,seats_name) VALUES (1,'плацкарт');
+INSERT INTO seats (vehicle_types_id,seats_name) VALUES (1,'купе');
+INSERT INTO seats (vehicle_types_id,seats_name) VALUES (2,'общий');
+
+INSERT INTO tariffs (vehicle_types_id,seats_id,tariffs_tariff,currencies_id) VALUES (1,1,180,1);
+INSERT INTO tariffs (vehicle_types_id,seats_id,tariffs_tariff,currencies_id) VALUES (1,2,300,1);
+INSERT INTO tariffs (vehicle_types_id,seats_id,tariffs_tariff,currencies_id) VALUES (1,3,400,1);
+INSERT INTO tariffs (vehicle_types_id,seats_id,tariffs_tariff,currencies_id) VALUES (2,1,350,1);
+
+INSERT INTO vehicles (vehicle_types_id,vehicles_name,vehicles_places_number) VALUES (1,'usual train',350);
+INSERT INTO vehicles (vehicle_types_id,vehicles_name,vehicles_places_number) VALUES (2,'usual bus',40);
+
+INSERT INTO station_types (station_types_name) VALUES ('railway station');
+INSERT INTO station_types (station_types_name) VALUES ('bus station');
+
+
+INSERT INTO localities (localities_name) VALUES ('Минск');
+INSERT INTO localities (localities_name) VALUES ('Витебск');
+INSERT INTO localities (localities_name) VALUES ('Гомель');
+INSERT INTO localities (localities_name) VALUES ('Гродно');
+INSERT INTO localities (localities_name) VALUES ('Могилев');
+INSERT INTO localities (localities_name) VALUES ('Брест');
+INSERT INTO localities (localities_name) VALUES ('Барановичи');
+INSERT INTO localities (localities_name) VALUES ('Городок');
+INSERT INTO localities (localities_name) VALUES ('Лида');
+INSERT INTO localities (localities_name) VALUES ('Полоцк');
+
+INSERT INTO stations (station_types_id,stations_name) VALUES (1,'Минск-Центральный');1
+INSERT INTO stations (station_types_id,stations_name) VALUES (1,'Минск-Восточный');2
+INSERT INTO stations (station_types_id,stations_name) VALUES (1,'Витебск');3
+INSERT INTO stations (station_types_id,stations_name) VALUES (1,'Гомель');4
+INSERT INTO stations (station_types_id,stations_name) VALUES (1,'Гродно');5
+INSERT INTO stations (station_types_id,stations_name) VALUES (1,'Могилев');6
+INSERT INTO stations (station_types_id,stations_name) VALUES (1,'Брест');7
+INSERT INTO stations (station_types_id,stations_name) VALUES (1,'Барановичи');8
+INSERT INTO stations (station_types_id,stations_name) VALUES (1,'Лида');9
+INSERT INTO stations (station_types_id,stations_name) VALUES (1,'Полоцк');10
+INSERT INTO stations (station_types_id,stations_name) VALUES (2,'Минск');11
+INSERT INTO stations (station_types_id,stations_name) VALUES (2,'Витебск');12
+INSERT INTO stations (station_types_id,stations_name) VALUES (2,'Гомель');13
+INSERT INTO stations (station_types_id,stations_name) VALUES (2,'Гродно');14
+INSERT INTO stations (station_types_id,stations_name) VALUES (2,'Могилев');15
+INSERT INTO stations (station_types_id,stations_name) VALUES (2,'Брест');16
+INSERT INTO stations (station_types_id,stations_name) VALUES (2,'Барановичи');17
+INSERT INTO stations (station_types_id,stations_name) VALUES (2,'Лида');18
+INSERT INTO stations (station_types_id,stations_name) VALUES (2,'Полоцк');19
+
+INSERT INTO locality_station (localities_id,stations_id) VALUES (1,1);
+INSERT INTO locality_station (localities_id,stations_id) VALUES (1,2);
+INSERT INTO locality_station (localities_id,stations_id) VALUES (1,11);
+INSERT INTO locality_station (localities_id,stations_id) VALUES (2,3);
+INSERT INTO locality_station (localities_id,stations_id) VALUES (2,12);
+INSERT INTO locality_station (localities_id,stations_id) VALUES (3,4);
+INSERT INTO locality_station (localities_id,stations_id) VALUES (3,13);
+INSERT INTO locality_station (localities_id,stations_id) VALUES (4,5);
+INSERT INTO locality_station (localities_id,stations_id) VALUES (4,14);
+INSERT INTO locality_station (localities_id,stations_id) VALUES (5,6);
+INSERT INTO locality_station (localities_id,stations_id) VALUES (5,15);
+INSERT INTO locality_station (localities_id,stations_id) VALUES (6,7);
+INSERT INTO locality_station (localities_id,stations_id) VALUES (6,16);
+INSERT INTO locality_station (localities_id,stations_id) VALUES (7,8);
+INSERT INTO locality_station (localities_id,stations_id) VALUES (7,17);
+INSERT INTO locality_station (localities_id,stations_id) VALUES (8,9);
+INSERT INTO locality_station (localities_id,stations_id) VALUES (8,18);
+INSERT INTO locality_station (localities_id,stations_id) VALUES (9,10);
+INSERT INTO locality_station (localities_id,stations_id) VALUES (9,19);
+
+INSERT INTO linies (linies_name,stations_id,linies_sequence) VALUES (100,7,1);
+INSERT INTO linies (linies_name,stations_id,linies_sequence) VALUES (100,8,2);
+INSERT INTO linies (linies_name,stations_id,linies_sequence) VALUES (100,1,3);
+INSERT INTO linies (linies_name,stations_id,linies_sequence) VALUES (100,2,4);
+INSERT INTO linies (linies_name,stations_id,linies_sequence) VALUES (100,3,5);
+
+INSERT INTO users (users_name,users_surname,users_passport) VALUES ("Ihar","Karatkou","BM1010101");
+INSERT INTO users (users_name,users_surname,users_passport) VALUES ("Siarhey","Karatkou","BM1010102");
+INSERT INTO users (users_name,users_surname,users_passport) VALUES ("Hanna","Piatrova","BM1010103");
+INSERT INTO users (users_name,users_surname,users_passport) VALUES ("Volha","Maslakova","BM1010104");
+INSERT INTO users (users_name,users_surname,users_passport) VALUES ("Artsiom","Surnin","BM1010105");
+INSERT INTO users (users_name,users_surname,users_passport) VALUES ("Aliaksandr","Ivanou","BM1010106");
+INSERT INTO users (users_name,users_surname,users_passport) VALUES ("Ivan","Lukashou","BM1010107");
+INSERT INTO users (users_name,users_surname,users_passport) VALUES ("Inna","Kebitch","BM1010108");
+
+
+
