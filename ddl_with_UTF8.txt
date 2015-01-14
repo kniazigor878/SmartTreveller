@@ -1,0 +1,404 @@
+﻿USE test
+;
+
+SET FOREIGN_KEY_CHECKS=0;
+
+
+
+DROP TABLE IF EXISTS currencies CASCADE
+;
+DROP TABLE IF EXISTS distances CASCADE
+;
+DROP TABLE IF EXISTS linies CASCADE
+;
+DROP TABLE IF EXISTS linies_desc CASCADE
+;
+DROP TABLE IF EXISTS localities CASCADE
+;
+DROP TABLE IF EXISTS locality_station CASCADE
+;
+DROP TABLE IF EXISTS rates CASCADE
+;
+DROP TABLE IF EXISTS reservations CASCADE
+;
+DROP TABLE IF EXISTS seats CASCADE
+;
+DROP TABLE IF EXISTS station_times CASCADE
+;
+DROP TABLE IF EXISTS station_types CASCADE
+;
+DROP TABLE IF EXISTS stations CASCADE
+;
+DROP TABLE IF EXISTS tariffs CASCADE
+;
+DROP TABLE IF EXISTS times_distances CASCADE
+;
+DROP TABLE IF EXISTS users CASCADE
+;
+DROP TABLE IF EXISTS vehicle_types CASCADE
+;
+DROP TABLE IF EXISTS vehicles CASCADE
+;
+DROP TABLE IF EXISTS vehicles_linies CASCADE
+;
+
+CREATE TABLE currencies
+(
+	currencies_id INTEGER NOT NULL AUTO_INCREMENT,
+	currencies_name VARCHAR(3),
+	PRIMARY KEY (currencies_id)
+
+) 
+;
+
+
+CREATE TABLE distances
+(
+	distances_id INTEGER NOT NULL AUTO_INCREMENT,
+	stations_id_from INTEGER NOT NULL,
+	stations_id_to INTEGER NOT NULL,
+	distances_distance DOUBLE,
+	PRIMARY KEY (distances_id),
+	KEY (stations_id_from),
+	KEY (stations_id_to)
+
+) 
+;
+
+
+CREATE TABLE linies
+(
+	linies_id INTEGER NOT NULL AUTO_INCREMENT,
+	linies_desc_id INTEGER NOT NULL,
+	stations_id INTEGER NOT NULL,
+	linies_sequence INTEGER,
+	PRIMARY KEY (linies_id),
+	KEY (linies_desc_id),
+	KEY (stations_id)
+
+) 
+;
+
+
+CREATE TABLE linies_desc
+(
+	linies_desc_id INTEGER NOT NULL AUTO_INCREMENT,
+	vehicles_types_id INTEGER NOT NULL,
+	linies_desc_name VARCHAR(50),
+	linies_desc_desc VARCHAR(100) CHARACTER SET utf8,
+	PRIMARY KEY (linies_desc_id),
+	KEY (vehicles_types_id)
+
+) 
+;
+
+
+CREATE TABLE localities
+(
+	localities_id INTEGER NOT NULL AUTO_INCREMENT,
+	localities_name VARCHAR(50) CHARACTER SET utf8,
+	PRIMARY KEY (localities_id)
+
+) 
+;
+
+
+CREATE TABLE locality_station
+(
+	locality_station_id INTEGER NOT NULL AUTO_INCREMENT,
+	localities_id INTEGER NOT NULL,
+	stations_id INTEGER NOT NULL,
+	PRIMARY KEY (locality_station_id),
+	KEY (localities_id),
+	KEY (stations_id)
+
+) 
+;
+
+
+CREATE TABLE rates
+(
+	rates_id INTEGER NOT NULL AUTO_INCREMENT,
+	currencies_id_from INTEGER NOT NULL,
+	currencies_id_to INTEGER NOT NULL,
+	rates_coef DOUBLE,
+	PRIMARY KEY (rates_id),
+	KEY (currencies_id_from),
+	KEY (currencies_id_to)
+
+) 
+;
+
+
+CREATE TABLE reservations
+(
+	reservations_id INTEGER NOT NULL AUTO_INCREMENT,
+	users_id INTEGER NOT NULL,
+	reservations_cust_id VARCHAR(11),
+	linies_desc_id INTEGER NOT NULL,
+	stations_start_id INTEGER NOT NULL,
+	stations_end_id INTEGER NOT NULL,
+	reservations_paid INTEGER,
+	PRIMARY KEY (reservations_id),
+	KEY (linies_desc_id),
+	KEY (stations_end_id),
+	KEY (stations_start_id),
+	KEY (users_id)
+
+) 
+;
+
+
+CREATE TABLE seats
+(
+	seats_id INTEGER NOT NULL AUTO_INCREMENT,
+	vehicle_types_id INTEGER NOT NULL,
+	seats_name VARCHAR(50) CHARACTER SET utf8,
+	PRIMARY KEY (seats_id),
+	KEY (vehicle_types_id)
+
+) 
+;
+
+
+CREATE TABLE station_times
+(
+	station_times_id INTEGER NOT NULL AUTO_INCREMENT,
+	linies_desc_id INTEGER NOT NULL,
+	stations_id INTEGER NOT NULL,
+	station_times_time DOUBLE,
+	PRIMARY KEY (station_times_id),
+	KEY (linies_desc_id),
+	KEY (stations_id)
+
+) 
+;
+
+
+CREATE TABLE station_types
+(
+	station_types_id INTEGER NOT NULL AUTO_INCREMENT,
+	station_types_name VARCHAR(50),
+	PRIMARY KEY (station_types_id)
+
+) 
+;
+
+
+CREATE TABLE stations
+(
+	stations_id INTEGER NOT NULL AUTO_INCREMENT,
+	station_types_id INTEGER NOT NULL,
+	stations_name VARCHAR(50) CHARACTER SET utf8,
+	PRIMARY KEY (stations_id),
+	KEY (station_types_id)
+
+) 
+;
+
+
+CREATE TABLE tariffs
+(
+	tariffs_id INTEGER NOT NULL AUTO_INCREMENT,
+	vehicle_types_id INTEGER NOT NULL,
+	seats_id INTEGER NOT NULL,
+	tariffs_tariff DOUBLE,
+	currencies_id INTEGER NOT NULL,
+	PRIMARY KEY (tariffs_id),
+	KEY (currencies_id),
+	KEY (seats_id),
+	KEY (vehicle_types_id)
+
+) 
+;
+
+
+CREATE TABLE times_distances
+(
+	times_distances_id INTEGER NOT NULL AUTO_INCREMENT,
+	linies_desc_id INTEGER NOT NULL,
+	distances_id INTEGER NOT NULL,
+	times_distances_time DOUBLE,
+	PRIMARY KEY (times_distances_id),
+	KEY (distances_id),
+	KEY (linies_desc_id)
+
+) 
+;
+
+
+CREATE TABLE users
+(
+	users_id INTEGER NOT NULL AUTO_INCREMENT,
+	users_name VARCHAR(50),
+	users_surname VARCHAR(50),
+	users_passport VARCHAR(50),
+	PRIMARY KEY (users_id)
+
+) 
+;
+
+
+CREATE TABLE vehicle_types
+(
+	vehicles_types_id INTEGER NOT NULL AUTO_INCREMENT,
+	vehicle_types_name VARCHAR(50),
+	PRIMARY KEY (vehicles_types_id)
+
+) 
+;
+
+
+CREATE TABLE vehicles
+(
+	vehicles_id INTEGER NOT NULL AUTO_INCREMENT,
+	vehicle_types_id INTEGER NOT NULL,
+	vehicles_name VARCHAR(50) CHARACTER SET utf8,
+	vehicles_places_number INTEGER,
+	PRIMARY KEY (vehicles_id),
+	KEY (vehicle_types_id)
+
+) 
+;
+
+
+CREATE TABLE vehicles_linies
+(
+	vehicles_linies_id INTEGER NOT NULL AUTO_INCREMENT,
+	linies_desc_id INTEGER NOT NULL,
+	vehicles_id INTEGER NOT NULL,
+	PRIMARY KEY (vehicles_linies_id),
+	KEY (linies_desc_id),
+	KEY (vehicles_id)
+
+) 
+;
+
+
+
+SET FOREIGN_KEY_CHECKS=1;
+
+
+ALTER TABLE distances ADD CONSTRAINT FK_distances_stations_from 
+	FOREIGN KEY (stations_id_from) REFERENCES stations (stations_id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
+
+ALTER TABLE distances ADD CONSTRAINT FK_distances_stations_to 
+	FOREIGN KEY (stations_id_to) REFERENCES stations (stations_id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
+
+ALTER TABLE linies ADD CONSTRAINT FK_linies_linies_desc 
+	FOREIGN KEY (linies_desc_id) REFERENCES linies_desc (linies_desc_id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
+
+ALTER TABLE linies ADD CONSTRAINT FK_linies_stations 
+	FOREIGN KEY (stations_id) REFERENCES stations (stations_id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
+
+ALTER TABLE linies_desc ADD CONSTRAINT FK_linies_desc_vehicle_types 
+	FOREIGN KEY (vehicles_types_id) REFERENCES vehicle_types (vehicles_types_id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
+
+ALTER TABLE locality_station ADD CONSTRAINT FK_locality_station_localities 
+	FOREIGN KEY (localities_id) REFERENCES localities (localities_id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
+
+ALTER TABLE locality_station ADD CONSTRAINT FK_locality_station_stations 
+	FOREIGN KEY (stations_id) REFERENCES stations (stations_id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
+
+ALTER TABLE rates ADD CONSTRAINT FK_rates_currencies_from 
+	FOREIGN KEY (currencies_id_from) REFERENCES currencies (currencies_id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
+
+ALTER TABLE rates ADD CONSTRAINT FK_rates_currencies_to 
+	FOREIGN KEY (currencies_id_to) REFERENCES currencies (currencies_id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
+
+ALTER TABLE reservations ADD CONSTRAINT FK_reservations_linies_desc 
+	FOREIGN KEY (linies_desc_id) REFERENCES linies_desc (linies_desc_id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
+
+ALTER TABLE reservations ADD CONSTRAINT FK_reservations_stations_end 
+	FOREIGN KEY (stations_end_id) REFERENCES stations (stations_id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
+
+ALTER TABLE reservations ADD CONSTRAINT FK_reservations_stations_start 
+	FOREIGN KEY (stations_start_id) REFERENCES stations (stations_id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
+
+ALTER TABLE reservations ADD CONSTRAINT FK_reservations_users 
+	FOREIGN KEY (users_id) REFERENCES users (users_id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
+
+ALTER TABLE seats ADD CONSTRAINT FK_seats_vehicle_types 
+	FOREIGN KEY (vehicle_types_id) REFERENCES vehicle_types (vehicles_types_id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
+
+ALTER TABLE station_times ADD CONSTRAINT FK_station_times_linies_desc 
+	FOREIGN KEY (linies_desc_id) REFERENCES linies_desc (linies_desc_id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
+
+ALTER TABLE station_times ADD CONSTRAINT FK_station_times_stations 
+	FOREIGN KEY (stations_id) REFERENCES stations (stations_id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
+
+ALTER TABLE stations ADD CONSTRAINT FK_stations_station_types 
+	FOREIGN KEY (station_types_id) REFERENCES station_types (station_types_id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
+
+ALTER TABLE tariffs ADD CONSTRAINT FK_tariffs_currencies 
+	FOREIGN KEY (currencies_id) REFERENCES currencies (currencies_id)
+;
+
+ALTER TABLE tariffs ADD CONSTRAINT FK_tariffs_seats 
+	FOREIGN KEY (seats_id) REFERENCES seats (seats_id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
+
+ALTER TABLE tariffs ADD CONSTRAINT FK_tariffs_vehicle_types 
+	FOREIGN KEY (vehicle_types_id) REFERENCES vehicle_types (vehicles_types_id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
+
+ALTER TABLE times_distances ADD CONSTRAINT FK_times_distances_distances 
+	FOREIGN KEY (distances_id) REFERENCES distances (distances_id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
+
+ALTER TABLE times_distances ADD CONSTRAINT FK_times_distances_linies_desc 
+	FOREIGN KEY (linies_desc_id) REFERENCES linies_desc (linies_desc_id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
+
+ALTER TABLE vehicles ADD CONSTRAINT FK_vehicles_vehicle_types 
+	FOREIGN KEY (vehicle_types_id) REFERENCES vehicle_types (vehicles_types_id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
+
+ALTER TABLE vehicles_linies ADD CONSTRAINT FK_vehicles_linies_linies_desc 
+	FOREIGN KEY (linies_desc_id) REFERENCES linies_desc (linies_desc_id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
+
+ALTER TABLE vehicles_linies ADD CONSTRAINT FK_vehicles_linies_vehicles 
+	FOREIGN KEY (vehicles_id) REFERENCES vehicles (vehicles_id)
+	ON DELETE CASCADE ON UPDATE CASCADE
+;
