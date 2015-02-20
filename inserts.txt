@@ -57,6 +57,8 @@ INSERT INTO stations (station_types_id,stations_name) VALUES (2,'Брест');
 INSERT INTO stations (station_types_id,stations_name) VALUES (2,'Барановичи');
 INSERT INTO stations (station_types_id,stations_name) VALUES (2,'Лида');
 INSERT INTO stations (station_types_id,stations_name) VALUES (2,'Полоцк');
+INSERT INTO stations (station_types_id,stations_name) VALUES (2,'Полоцк');
+INSERT INTO stations (station_types_id,stations_name) VALUES (1,'Городок');
 
 INSERT INTO locality_station (localities_id,stations_id) VALUES (1,1);
 INSERT INTO locality_station (localities_id,stations_id) VALUES (1,2);
@@ -73,10 +75,11 @@ INSERT INTO locality_station (localities_id,stations_id) VALUES (6,7);
 INSERT INTO locality_station (localities_id,stations_id) VALUES (6,16);
 INSERT INTO locality_station (localities_id,stations_id) VALUES (7,8);
 INSERT INTO locality_station (localities_id,stations_id) VALUES (7,17);
-INSERT INTO locality_station (localities_id,stations_id) VALUES (8,9);
-INSERT INTO locality_station (localities_id,stations_id) VALUES (8,18);
-INSERT INTO locality_station (localities_id,stations_id) VALUES (9,10);
-INSERT INTO locality_station (localities_id,stations_id) VALUES (9,19);
+INSERT INTO locality_station (localities_id,stations_id) VALUES (9,9);
+INSERT INTO locality_station (localities_id,stations_id) VALUES (9,18);
+INSERT INTO locality_station (localities_id,stations_id) VALUES (10,10);
+INSERT INTO locality_station (localities_id,stations_id) VALUES (10,19);
+INSERT INTO locality_station (localities_id,stations_id) VALUES (8,20);
 
 INSERT INTO linies_desc (vehicles_types_id,linies_desc_name,linies_desc_desc) VALUES (1,"100","Брест-Витебск");
 INSERT INTO linies_desc (vehicles_types_id,linies_desc_name,linies_desc_desc) VALUES (1,"101","Витебск-Брест");
