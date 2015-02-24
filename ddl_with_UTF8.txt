@@ -97,6 +97,9 @@ CREATE TABLE localities
 (
 	localities_id INTEGER NOT NULL AUTO_INCREMENT,
 	localities_name VARCHAR(50) CHARACTER SET utf8,
+	localities_x VARCHAR(50),
+	localities_y VARCHAR(50),
+	localities_map_mark VARCHAR(1),
 	PRIMARY KEY (localities_id)
 
 ) 

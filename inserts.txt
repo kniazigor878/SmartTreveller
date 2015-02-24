@@ -27,16 +27,16 @@ INSERT INTO station_types (station_types_name) VALUES ('railway station');
 INSERT INTO station_types (station_types_name) VALUES ('bus station');
 
 
-INSERT INTO localities (localities_name) VALUES ('Минск');
-INSERT INTO localities (localities_name) VALUES ('Витебск');
-INSERT INTO localities (localities_name) VALUES ('Гомель');
-INSERT INTO localities (localities_name) VALUES ('Гродно');
-INSERT INTO localities (localities_name) VALUES ('Могилев');
-INSERT INTO localities (localities_name) VALUES ('Брест');
-INSERT INTO localities (localities_name) VALUES ('Барановичи');
-INSERT INTO localities (localities_name) VALUES ('Городок');
-INSERT INTO localities (localities_name) VALUES ('Лида');
-INSERT INTO localities (localities_name) VALUES ('Полоцк');
+INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Минск',100,100,1);
+INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Витебск',100,100,1);
+INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Гомель',100,100,1);
+INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Гродно',100,100,1);
+INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Могилев',100,100,1);
+INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Брест',100,100,1);
+INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Барановичи',100,100,1);
+INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Городок',100,100,1);
+INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Лида',100,100,1);
+INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Полоцк',100,100,1);
 
 INSERT INTO stations (station_types_id,stations_name) VALUES (1,'Минск-Центральный');
 INSERT INTO stations (station_types_id,stations_name) VALUES (1,'Минск-Восточный');
