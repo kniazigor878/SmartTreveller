@@ -27,16 +27,16 @@ INSERT INTO station_types (station_types_name) VALUES ('railway station');
 INSERT INTO station_types (station_types_name) VALUES ('bus station');
 
 
-INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Минск',100,100,1);
-INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Витебск',100,100,1);
-INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Гомель',100,100,1);
-INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Гродно',100,100,1);
-INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Могилев',100,100,1);
-INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Брест',100,100,1);
-INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Барановичи',100,100,1);
-INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Городок',100,100,1);
-INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Лида',100,100,1);
-INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Полоцк',100,100,1);
+INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Минск',0.46,0.5,1);
+INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Витебск',0.71,0.24,2);
+INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Гомель',0.78,0.76,2);
+INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Гродно',0.1,0.54,2);
+INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Могилев',0.75,0.48,2);
+INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Брест',0.08,0.84,2);
+INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Барановичи',0.32,0.67,2);
+INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Городок',0.69,0.17,4);
+INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Лида',0.25,0.5,3);
+INSERT INTO localities (localities_name,localities_x,localities_y,localities_map_mark) VALUES ('Полоцк',0.57,0.17,3);
 
 INSERT INTO stations (station_types_id,stations_name) VALUES (1,'Минск-Центральный');
 INSERT INTO stations (station_types_id,stations_name) VALUES (1,'Минск-Восточный');
